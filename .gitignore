@@ -7,6 +7,9 @@
 
 *.iml
 
-*.xml
 
 target/classes/version.txt
+
+nbactions.xml
+
+*.class
