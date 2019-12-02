@@ -1,0 +1,12 @@
+
+.hg_archival.txt
+
+.hgignore
+
+.idea/
+
+*.iml
+
+*.xml
+
+target/classes/version.txt
