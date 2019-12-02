@@ -24,6 +24,7 @@ public class ChessModel implements IChess {
 
     @Override
     public void reinit() {
+        Board board1 = new Board();
 
     }
 
