@@ -75,13 +75,13 @@ public class Board {
                     if (col == BOARD_POS_X_KINGSIDE_ROOK) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK);
                     }
-                } else {
-                    chessBoard[row][col] = null;
                 }
-
             }
-
         }
 
+    }
+
+    public Piece chessPiece(ChessPosition p){
+        return this.chessBoard[p.y][p.x];
     }
 }
