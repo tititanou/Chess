@@ -17,63 +17,63 @@ public class Board {
                 chessBoard[row][col] = null;
 
                 if (row == BOARD_POS_Y_WHITE_PAWNS) {
-                    chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_PAWN);
+                    chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_PAWN,new KnightMoves());
                 }
 
                 if (row == BOARD_POS_Y_BLACK_PAWNS) {
-                    chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_PAWN);
+                    chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_PAWN,new KnightMoves());
                 }
 
                 if (row == BOARD_POS_Y_WHITE_PIECES) {
 
                     if (col == BOARD_POS_X_QUEENSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK,new KnightMoves());
                     } else if (col == BOARD_POS_X_QUEENSIDE_KNIGHT) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_QUEENSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_QUEEN) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KING) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KING);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KING,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_KNIGHT) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK,new KnightMoves());
                     }
                 }
 
                 if (row == BOARD_POS_Y_BLACK_PIECES) {
                     if (col == BOARD_POS_X_QUEENSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK,new KnightMoves());
                     } else if (col == BOARD_POS_X_QUEENSIDE_KNIGHT) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_QUEENSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_QUEEN) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KING) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KING);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KING,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_KNIGHT) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK);
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK,new KnightMoves());
                     }
                 }
             }
