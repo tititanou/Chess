@@ -4,9 +4,9 @@ import static fr.rphstudio.chess.interf.IChess.*;
 
 public class Board {
 
-    private Piece [][] chessBoard = new Piece [8][8];
+    private Piece[][] chessBoard = new Piece[8][8];
 
-    public Board () {
+    public Board() {
 
         int row;
         int col;
@@ -81,7 +81,32 @@ public class Board {
 
     }
 
-    public Piece chessPiece(ChessPosition p){
+    public Piece chessPiece(ChessPosition p) {
         return this.chessBoard[p.y][p.x];
     }
+
+
+    public int counter(ChessColor color) {
+
+
+        int row;
+        int col;
+        int count = 0;
+
+        for (row = 0; row < 8; row = row + 1) {
+            for (col = 0; col < 8; col = col + 1) {
+
+                Piece pieces = chessBoard[row][col];
+                if(pieces != null) {
+                    if (pieces.getPieceColor() == color) {
+                        count = count + 1;
+                    }
+                }
+
+            }
+        }
+        return count;
+
+    }
+
 }
