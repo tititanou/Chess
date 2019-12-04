@@ -17,12 +17,13 @@ public class KnightMoves implements IMove {
         List<ChessPosition> possibleMoves = new ArrayList<>();
 
         ChessPosition p1 = new ChessPosition(p.x + 1, p.y + 2);
-        if (Moves.isValidPosition(p1)) {
+        if (Moves.isValidPosition(p1) == true) {
             if (Moves.isEmptyCell(p1 , brd)) {
                 possibleMoves.add(p1);
             } else {
-                ChessColor c = brd.chessPiece(p1).getPieceColor();
-                if (!Moves.isSameColor(p1, c , brd)) {
+                Piece piece1 = brd.chessPiece(p1);
+                ChessColor c = piece1.getPieceColor();
+                if (Moves.isSameColor(p, c , brd) == false) {
                     possibleMoves.add(p1);
                 }
             }
@@ -35,7 +36,7 @@ public class KnightMoves implements IMove {
                 possibleMoves.add(p2);
             } else {
                 ChessColor c = brd.chessPiece(p2).getPieceColor();
-                if (Moves.isSameColor(p2, c , brd) == false) {
+                if (Moves.isSameColor(p, c , brd) == false) {
                     possibleMoves.add(p2);
                 }
             }
@@ -48,7 +49,7 @@ public class KnightMoves implements IMove {
                 possibleMoves.add(p3);
             } else {
                 ChessColor c = brd.chessPiece(p3).getPieceColor();
-                if (Moves.isSameColor(p3, c , brd) == false) {
+                if (Moves.isSameColor(p, c , brd) == false) {
                     possibleMoves.add(p3);
                 }
             }
@@ -61,7 +62,7 @@ public class KnightMoves implements IMove {
                 possibleMoves.add(p4);
             } else {
                 ChessColor c = brd.chessPiece(p4).getPieceColor();
-                if (Moves.isSameColor(p4, c , brd) == false) {
+                if (Moves.isSameColor(p, c , brd) == false) {
                     possibleMoves.add(p4);
                 }
             }
@@ -73,7 +74,7 @@ public class KnightMoves implements IMove {
                 possibleMoves.add(p5);
             } else {
                 ChessColor c = brd.chessPiece(p5).getPieceColor();
-                if (Moves.isSameColor(p5 , c , brd) == false) {
+                if (Moves.isSameColor(p , c , brd) == false) {
                     possibleMoves.add(p5);
                 }
             }
@@ -85,7 +86,7 @@ public class KnightMoves implements IMove {
                 possibleMoves.add(p6);
             } else {
                 ChessColor c = brd.chessPiece(p6).getPieceColor();
-                if (Moves.isSameColor(p6 , c , brd) == false) {
+                if (Moves.isSameColor(p , c , brd) == false) {
                     possibleMoves.add(p6);
                 }
             }
@@ -100,7 +101,7 @@ public class KnightMoves implements IMove {
             }
             else {
                 ChessColor c = brd.chessPiece(p7).getPieceColor();
-                if (Moves.isSameColor(p7 , c , brd) == false) {
+                if (Moves.isSameColor(p , c , brd) == false) {
                     possibleMoves.add(p7);
                 }
             }
@@ -116,7 +117,7 @@ public class KnightMoves implements IMove {
             }
             else {
                 ChessColor c = brd.chessPiece(p8).getPieceColor();
-                if (Moves.isSameColor(p8, c , brd) == false) {
+                if (Moves.isSameColor(p, c , brd) == false) {
                     possibleMoves.add(p8);
                 }
             }

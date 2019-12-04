@@ -76,6 +76,10 @@ public class ChessModel implements IChess {
         }
         return possibleMoves;
     }
+// movePiece prend la position de la piece située en P0 (recupérée grâce à la fonction setboardpos de la classe board)
+// en ligne 84, il met l apiéce PO en position p1
+// en ligne 85, en position P0, il annule la présence d'une piéce.
+//TODO traduire le commentaire en anglais
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
