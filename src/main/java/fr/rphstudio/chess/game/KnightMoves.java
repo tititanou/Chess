@@ -1,5 +1,6 @@
 package fr.rphstudio.chess.game;
 
+import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IChess.*;
 
 import java.util.ArrayList;
@@ -8,118 +9,37 @@ import java.util.List;
 public class KnightMoves implements IMove {
 
 
-
-
     @Override
     public List<ChessPosition> getMoves(ChessPosition p, Board brd) {
-
-
         List<ChessPosition> possibleMoves = new ArrayList<>();
-
-        ChessPosition p1 = new ChessPosition(p.x + 1, p.y + 2);
-        if (Moves.isValidPosition(p1) == true) {
-            if (Moves.isEmptyCell(p1 , brd)) {
-                possibleMoves.add(p1);
-            } else {
-                Piece piece1 = brd.chessPiece(p1);
-                ChessColor c = piece1.getPieceColor();
-                if (Moves.isSameColor(p, c , brd) == false) {
-                    possibleMoves.add(p1);
-                }
-            }
-        }
-
-
-        ChessPosition p2 = new ChessPosition(p.x + 2, p.y + 1);
-        if (Moves.isValidPosition(p2) == true) {
-            if (Moves.isEmptyCell(p2 , brd)) {
-                possibleMoves.add(p2);
-            } else {
-                ChessColor c = brd.chessPiece(p2).getPieceColor();
-                if (Moves.isSameColor(p, c , brd) == false) {
-                    possibleMoves.add(p2);
-                }
-            }
-        }
-
-
-        ChessPosition p3 = new ChessPosition(p.x + 2, p.y - 1);
-        if (Moves.isValidPosition(p3)) {
-            if (Moves.isEmptyCell(p3,brd)) {
-                possibleMoves.add(p3);
-            } else {
-                ChessColor c = brd.chessPiece(p3).getPieceColor();
-                if (Moves.isSameColor(p, c , brd) == false) {
-                    possibleMoves.add(p3);
-                }
-            }
-        }
-
-
-        ChessPosition p4 = new ChessPosition(p.x + 1, p.y - 2);
-        if (Moves.isValidPosition(p4)) {
-            if (Moves.isEmptyCell(p4 , brd)) {
-                possibleMoves.add(p4);
-            } else {
-                ChessColor c = brd.chessPiece(p4).getPieceColor();
-                if (Moves.isSameColor(p, c , brd) == false) {
-                    possibleMoves.add(p4);
-                }
-            }
-        }
-
-        ChessPosition p5 = new ChessPosition(p.x - 1, p.y - 2);
-        if (Moves.isValidPosition(p5)) {
-            if (Moves.isEmptyCell(p5 , brd)) {
-                possibleMoves.add(p5);
-            } else {
-                ChessColor c = brd.chessPiece(p5).getPieceColor();
-                if (Moves.isSameColor(p , c , brd) == false) {
-                    possibleMoves.add(p5);
-                }
-            }
-        }
-
-        ChessPosition p6 = new ChessPosition(p.x - 2, p.y - 1);
-        if (Moves.isValidPosition(p6)) {
-            if (Moves.isEmptyCell(p6 , brd)) {
-                possibleMoves.add(p6);
-            } else {
-                ChessColor c = brd.chessPiece(p6).getPieceColor();
-                if (Moves.isSameColor(p , c , brd) == false) {
-                    possibleMoves.add(p6);
-                }
-            }
-        }
-
-
-
-        ChessPosition p7 = new ChessPosition(p.x-2 , p.y+1);
-        if (Moves.isValidPosition(p7)){
-            if (Moves.isEmptyCell(p7 , brd)){
-                possibleMoves.add(p7);
-            }
-            else {
-                ChessColor c = brd.chessPiece(p7).getPieceColor();
-                if (Moves.isSameColor(p , c , brd) == false) {
-                    possibleMoves.add(p7);
-                }
-            }
-        }
-
-
-        ChessPosition p8= new ChessPosition(p.x-1 , p.y+2);
-        if (Moves.isValidPosition(p8)){
-            if (Moves.isEmptyCell(p8 , brd)){
-                possibleMoves.add(p8);
-            }
-            else {
-                ChessColor c = brd.chessPiece(p8).getPieceColor();
-                if (Moves.isSameColor(p, c , brd) == false) {
-                    possibleMoves.add(p8);
+        int dx;
+        int dy;
+        int x1;
+        int y1;
+        int x0 = p.x;
+        int y0 = p.y;
+        for (dx = -2; dx <= 2; dx = dx + 1) {
+            for (dy = -2; dy <= 2; dy = dy + 1) {
+                if (Math.abs(dx) + Math.abs(dy) == 3) {
+                    // Moves.straightMoves(possibleMoves, brd, dx, dy, 1, p);
+                    x1 = x0 + dx;
+                    y1 = y0 + dy;
+                    IChess.ChessPosition pp = new IChess.ChessPosition(x1, y1);
+                    if (Moves.isValidPosition(pp)) {
+                        if (Moves.isEmptyCell(pp, brd)) {
+                            possibleMoves.add(pp);
+                        } else {
+                            IChess.ChessColor c = brd.chessPiece(pp).getPieceColor();
+                            if (Moves.isSameColor(p, c, brd) == false) {
+                                possibleMoves.add(pp)
+                                ;
+                            }
+                        }
+                    }
                 }
             }
         }
         return possibleMoves;
     }
+
 }
