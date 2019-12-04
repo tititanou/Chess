@@ -13,7 +13,8 @@ public class ChessModel implements IChess {
     private Board board1;
 
     private ChessModel(){
-      this.board1 = new Board();
+      //this.board1 = new Board();
+        reinit();
 
     }
 
@@ -26,7 +27,7 @@ public class ChessModel implements IChess {
 
     @Override
     public void reinit() {
-
+        this.board1 = new Board();
     }
 
     @Override
