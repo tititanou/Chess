@@ -109,8 +109,6 @@ public class KnightMoves implements IMove {
 
 
         ChessPosition p8= new ChessPosition(p.x-1 , p.y+2);
-        p8.x = p.x -1;
-        p8.y = p.y +2;
         if (Moves.isValidPosition(p8)){
             if (Moves.isEmptyCell(p8 , brd)){
                 possibleMoves.add(p8);
@@ -122,10 +120,6 @@ public class KnightMoves implements IMove {
                 }
             }
         }
-
-
-
-
         return possibleMoves;
     }
 }
