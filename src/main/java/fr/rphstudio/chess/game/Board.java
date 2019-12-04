@@ -85,6 +85,11 @@ public class Board {
         return this.chessBoard[p.y][p.x];
     }
 
+    public Piece setBoardPos(ChessPosition p , Piece pc){
+        return this.chessBoard[p.y][p.x] = pc;
+    }
+
+
 
     public int counter(ChessColor color) {
 

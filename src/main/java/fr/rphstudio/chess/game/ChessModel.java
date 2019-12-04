@@ -31,33 +31,39 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        //verifier la position ds le tableau
-        Piece piece1 = board1.chessPiece(p);
-        if (piece1 != null){
-            ChessType type1 = piece1.getPieceType();
-            return type1;
+        if (p.x >= 0 && p.x <= 7 && p.y >= 0 && p.y <= 7) {
+            Piece piece1 = board1.chessPiece(p);
+            if (piece1 != null) {
+                ChessType type1 = piece1.getPieceType();
+                return type1;
+            }
+            else {
+                throw new EmptyCellException();
+            }
         }
         else{
-            throw new EmptyCellException();
+            throw new OutOfBoardException();
         }
-
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        Piece piece1 = board1.chessPiece(p);
-        if (piece1 != null){
-            ChessColor color1 = piece1.getPieceColor();
-            return color1;
+        if (p.x >= 0 && p.x <= 7 && p.y >= 0 && p.y <= 7) {
+            Piece piece1 = board1.chessPiece(p);
+            if (piece1 != null) {
+                ChessColor color1 = piece1.getPieceColor();
+                return color1;
+            } else {
+                throw new EmptyCellException();
+            }
         }
         else{
-            throw new EmptyCellException();
+            throw new OutOfBoardException();
         }
     }
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-
         return board1.counter(color);
     }
 
@@ -73,6 +79,9 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
+        Piece piece0 = board1.chessPiece(p0);
+        this.board1.setBoardPos(p1 , piece0);
+        this.board1.setBoardPos(p0 , null);
 
     }
 

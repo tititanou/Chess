@@ -31,5 +31,4 @@ public class Piece {
         return myList;
     }
 
-
 }
