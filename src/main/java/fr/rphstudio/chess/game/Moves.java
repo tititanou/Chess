@@ -2,6 +2,8 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 
+import java.util.List;
+
 public class Moves {
 
     public static boolean isValidPosition(IChess.ChessPosition p){
@@ -34,6 +36,33 @@ public class Moves {
         else {
             return false;
         }
+    }
+
+    public static List<IChess.ChessPosition> straightMoves(List<IChess.ChessPosition> l ,Board b , int vX , int vY , int dist , IChess.ChessPosition p){
+        int i;
+        for (i = 1 ; i <= dist ; i ++){
+            IChess.ChessPosition p1 = new IChess.ChessPosition(p.x + vX * i , p.y + vY * i);
+            if(Moves.isValidPosition(p1)){
+                if(Moves.isEmptyCell(p1 , b)){
+                    l.add(p1);
+                }
+                else {
+                    Piece piece1 = b.chessPiece(p1);
+                    IChess.ChessColor c = piece1.getPieceColor();
+                    if(!Moves.isSameColor(p , c , b)){
+                        l.add(p1);
+                        break;
+                    }
+                    else {
+                        break;
+                    }
+                }
+            }
+            else{
+                break;
+            }
+        }
+        return l;
     }
 
 }

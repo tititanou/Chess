@@ -32,7 +32,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_QUEENSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new BishopMoves());
                     }
                     if (col == BOARD_POS_X_QUEEN) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN,new KnightMoves());
@@ -41,7 +41,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KING,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new BishopMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_KNIGHT) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT,new KnightMoves());
@@ -58,7 +58,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_QUEENSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new BishopMoves());
                     }
                     if (col == BOARD_POS_X_QUEEN) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN,new KnightMoves());
@@ -67,7 +67,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KING,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_BISHOP) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new BishopMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_KNIGHT) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT,new KnightMoves());
