@@ -27,7 +27,7 @@ public class Board {
                 if (row == BOARD_POS_Y_WHITE_PIECES) {
 
                     if (col == BOARD_POS_X_QUEENSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK,new RookMoves());
                     } else if (col == BOARD_POS_X_QUEENSIDE_KNIGHT) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
@@ -47,13 +47,13 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_ROOK,new RookMoves());
                     }
                 }
 
                 if (row == BOARD_POS_Y_BLACK_PIECES) {
                     if (col == BOARD_POS_X_QUEENSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK,new RookMoves());
                     } else if (col == BOARD_POS_X_QUEENSIDE_KNIGHT) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
@@ -73,7 +73,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KNIGHT,new KnightMoves());
                     }
                     if (col == BOARD_POS_X_KINGSIDE_ROOK) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_ROOK,new RookMoves());
                     }
                 }
             }
