@@ -17,7 +17,10 @@ public class KingMoves implements IMove {
         Moves.straightMoves(possibleMoves, brd, 0, -1, 1, p);
         Moves.straightMoves(possibleMoves, brd, 1, -1, 1, p);
 
+        Piece piece = brd.chessPiece(p);
+        if (piece.hasMoved() == false){
 
+        }
 
 
 
@@ -55,6 +58,7 @@ public class KingMoves implements IMove {
         }*/
         return possibleMoves;
     }
+
 }
 
 

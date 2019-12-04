@@ -35,7 +35,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_BISHOP,new BishopMoves());
                     }
                     if (col == BOARD_POS_X_QUEEN) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_QUEEN,new QueenMoves());
                     }
                     if (col == BOARD_POS_X_KING) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_KING,new KingMoves());
@@ -61,7 +61,7 @@ public class Board {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_BISHOP,new BishopMoves());
                     }
                     if (col == BOARD_POS_X_QUEEN) {
-                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN,new KnightMoves());
+                        chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_QUEEN,new QueenMoves());
                     }
                     if (col == BOARD_POS_X_KING) {
                         chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_KING,new KingMoves());
@@ -91,7 +91,7 @@ public class Board {
 
 
 
-    public int counter(ChessColor color) {
+    public int pieceCounter(ChessColor color) {
 
 
         int row;

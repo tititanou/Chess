@@ -13,9 +13,7 @@ public class ChessModel implements IChess {
     private Board board1;
 
     private ChessModel(){
-      //this.board1 = new Board();
         reinit();
-
     }
 
     public static ChessModel getInstance(){
@@ -65,7 +63,7 @@ public class ChessModel implements IChess {
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-        return board1.counter(color);
+        return board1.pieceCounter(color);
     }
 
     @Override
@@ -74,6 +72,11 @@ public class ChessModel implements IChess {
         Piece piece1 = board1.chessPiece(p);
         if (piece1 != null){
             possibleMoves = piece1.getMove(p,board1);
+            //liste des coups réellement possibles realMoves
+            //boucle sur posibleMoves
+                //pour chaque p1 on va déplacer la piece(avec movePiece) puis on teste si roi allié est safe
+                // si roi safe alors p1 est réellement possible donc add ds realMoves
+            //possibleMoves = realMoves
         }
         return possibleMoves;
     }
@@ -87,6 +90,9 @@ public class ChessModel implements IChess {
         Piece piece0 = board1.chessPiece(p0);
         this.board1.setBoardPos(p1 , piece0);
         this.board1.setBoardPos(p0 , null);
+        piece0.increaseCounter();
+        System.out.println(piece0.getCounter());
+
 
     }
 

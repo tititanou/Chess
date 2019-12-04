@@ -9,11 +9,13 @@ public class Piece {
     private IChess.ChessColor pieceColor;
     private IChess.ChessType pieceType;
     private IMove move;
+    private  int counter;
 
     public Piece (IChess.ChessColor color, IChess.ChessType type, IMove mv){
         this.pieceColor = color;
         this.pieceType = type;
         this.move=mv;
+        this.counter = 0;
 
     }
 
@@ -31,4 +33,15 @@ public class Piece {
         return myList;
     }
 
+    public  int getCounter(){
+        return this.counter;
+    }
+
+    public void increaseCounter() {
+        this.counter = counter + 1;
+    }
+
+    public boolean hasMoved(){
+        return (counter > 0);
+    }
 }

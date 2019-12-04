@@ -1,8 +1,10 @@
+/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/RookMoves.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/launcher/ChessFontManager.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/ChessModel.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/interf/OutOfBoardException.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/Piece.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/launcher/ChessGameController.java
+/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/utilities.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/IMove.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/interf/IChess.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
@@ -10,6 +12,7 @@
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/Moves.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/BishopMoves.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/Board.java
+/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/QueenMoves.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/KingMoves.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/KnightMoves.java
