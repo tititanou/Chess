@@ -8,6 +8,7 @@
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/interf/EmptyCellException.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/interf/ChessException.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/Moves.java
+/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/BishopMoves.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/Board.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/launcher/MainLauncher.java
 /Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/src/main/java/fr/rphstudio/chess/game/KnightMoves.java
