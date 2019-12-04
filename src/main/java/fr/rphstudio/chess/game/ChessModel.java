@@ -31,33 +31,39 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessType getPieceType(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        //verifier la position ds le tableau
-        Piece piece1 = board1.chessPiece(p);
-        if (piece1 != null){
-            ChessType type1 = piece1.getPieceType();
-            return type1;
+        if (p.x >= 0 && p.x <= 7 && p.y >= 0 && p.y <= 7) {
+            Piece piece1 = board1.chessPiece(p);
+            if (piece1 != null) {
+                ChessType type1 = piece1.getPieceType();
+                return type1;
+            }
+            else {
+                throw new EmptyCellException();
+            }
         }
         else{
-            throw new EmptyCellException();
+            throw new OutOfBoardException();
         }
-
     }
 
     @Override
     public ChessColor getPieceColor(ChessPosition p) throws EmptyCellException, OutOfBoardException {
-        Piece piece1 = board1.chessPiece(p);
-        if (piece1 != null){
-            ChessColor color1 = piece1.getPieceColor();
-            return color1;
+        if (p.x >= 0 && p.x <= 7 && p.y >= 0 && p.y <= 7) {
+            Piece piece1 = board1.chessPiece(p);
+            if (piece1 != null) {
+                ChessColor color1 = piece1.getPieceColor();
+                return color1;
+            } else {
+                throw new EmptyCellException();
+            }
         }
         else{
-            throw new EmptyCellException();
+            throw new OutOfBoardException();
         }
     }
 
     @Override
     public int getNbRemainingPieces(ChessColor color) {
-
         return board1.counter(color);
     }
 
@@ -70,9 +76,16 @@ public class ChessModel implements IChess {
         }
         return possibleMoves;
     }
+// movePiece prend la position de la piece située en P0 (recupérée grâce à la fonction setboardpos de la classe board)
+// en ligne 84, il met l apiéce PO en position p1
+// en ligne 85, en position P0, il annule la présence d'une piéce.
+//TODO traduire le commentaire en anglais
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
+        Piece piece0 = board1.chessPiece(p0);
+        this.board1.setBoardPos(p1 , piece0);
+        this.board1.setBoardPos(p0 , null);
 
     }
 

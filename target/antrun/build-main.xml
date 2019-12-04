@@ -2,11 +2,11 @@
 <project name="maven-antrun-" default="main"  >
 <target name="main">
   <echo>Using env.test.properties</echo>
-  <copy todir="/Users/boriscassel/IdeaProjects/Romuald78-chesspublic-c27681582169/Chess/target/../lib">
-    <fileset includes="**" dir="/Users/boriscassel/IdeaProjects/Romuald78-chesspublic-c27681582169/Chess/target/natives"/>
+  <copy todir="/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/target/../lib">
+    <fileset includes="**" dir="/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/target/natives"/>
   </copy>
-  <copy todir="/Users/boriscassel/IdeaProjects/Romuald78-chesspublic-c27681582169/Chess/target/..">
-    <fileset includes="**" dir="/Users/boriscassel/IdeaProjects/Romuald78-chesspublic-c27681582169/Chess/target/../src/main/resources"/>
+  <copy todir="/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/target/..">
+    <fileset includes="**" dir="/Users/admin/Desktop/Projet/chess/Romuald78-chesspublic-c27681582169/target/../src/main/resources"/>
   </copy>
 </target>
 </project>
