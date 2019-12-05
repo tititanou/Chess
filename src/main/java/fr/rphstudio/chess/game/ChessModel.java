@@ -11,6 +11,8 @@ public class ChessModel implements IChess {
 
     static private ChessModel instance;
     private Board board1;
+    public List<ChessType> removedWhitePiece = new ArrayList();
+    public List<ChessType> removedBlackPieces = new ArrayList();
 
     private ChessModel(){
         reinit();
@@ -94,6 +96,7 @@ public class ChessModel implements IChess {
     public void movePiece(ChessPosition p0, ChessPosition p1) {
 
         Piece piece0 = board1.chessPiece(p0);
+        Piece piece1 = board1.chessPiece(p1);
 
         ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
         if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
@@ -131,6 +134,14 @@ public class ChessModel implements IChess {
         }
 
         piece0.increaseCounter();
+
+        if (piece1 != null) {
+            if (piece1.getPieceColor() == ChessColor.CLR_WHITE) {
+                removedWhitePiece.add(piece1.getPieceType());
+            } else {
+                removedBlackPieces.add(piece1.getPieceType());
+            }
+        }
         System.out.println(piece0.getCounter());
 
 
@@ -208,8 +219,25 @@ public class ChessModel implements IChess {
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        ArrayList possibleMoves = new ArrayList();
-        return possibleMoves;
+        List<ChessType> removedPiece = new ArrayList();
+
+        if (color== ChessColor.CLR_WHITE) {
+            removedPiece = removedWhitePiece;
+        }
+            /*ChessType pieceWhite = new Piece;
+            removedWhitePiece.add(pieceWhite);
+            return removedBlackPieces;
+        }*/
+        if (color==ChessColor.CLR_BLACK) {
+            removedPiece = removedBlackPieces;
+        }
+
+        return removedPiece;
+
+           /* ChessType pieceBlack = new Piece;
+            movedBlackPieces.add(pieceBlack);
+            return movedBlackPieces;
+        }*/
     }
 
     @Override
