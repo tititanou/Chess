@@ -140,9 +140,50 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
+        ChessKingState kingState;
+        //= ChessKingState.KING_SAFE;
 
 
+        if(color == ChessColor.CLR_WHITE) {
+            List<ChessPosition> tempList = board1.getEnemiesList(ChessColor.CLR_BLACK);
+            int i;
+            for (i=0 ; i < tempList.size() ; i++){
+                ChessPosition p = tempList.get(i);
+                List<ChessPosition> forbiddenPos = this.getPieceMoves(p);
+                int j;
+                for (j=0 ; j < forbiddenPos.size() ; j++){
+                    ChessPosition checkPos = forbiddenPos.get(j);
+                    Piece checkPiece = board1.chessPiece(checkPos);
+                    if (checkPiece != null && checkPiece.getPieceType() == ChessType.TYP_KING) {
+                        kingState = ChessKingState.KING_THREATEN;
+                    }
+                    else {
+                        kingState = ChessKingState.KING_SAFE;
+                    }
+                }
+            }
+        }
+        else{
+            List<ChessPosition> tempList = board1.getEnemiesList(ChessColor.CLR_WHITE);
+            int i;
+            for (i=0 ; i < tempList.size() ; i++){
+                ChessPosition p = tempList.get(i);
+                List<ChessPosition> forbiddenPos = this.getPieceMoves(p);
+                int j;
+                for (j=0 ; j < forbiddenPos.size() ; j++){
+                    ChessPosition checkPos = forbiddenPos.get(j);
+                    Piece checkPiece = board1.chessPiece(checkPos);
+                    if (checkPiece != null && checkPiece.getPieceType() == ChessType.TYP_KING) {
+                        kingState = ChessKingState.KING_THREATEN;
+                    }
+                    else {
+                        kingState = ChessKingState.KING_SAFE;
+                    }
+                }
+            }
+        }
 
+        return kingState;
         //tory 7 :Il faut vérifier s’ile st dans la portée d’une des pièces.
         //1°Double boucle  pour trouver la position du roi=> king position.
         //2)Une fois trouvé la position du roi, nouvelle double boucle our trouver les positions des ennemis.
@@ -150,8 +191,6 @@ public class ChessModel implements IChess {
         //3. Parcourir la liste de positions ennemis et dire si ça correspond à la position du roi
         //4. Tu renvoies safe ou menacé
 
-
-        return ChessKingState.KING_SAFE;
     }
 
     @Override
@@ -171,7 +210,7 @@ public class ChessModel implements IChess {
     }
 
 
-//TODO note pour plus tard : tester de nouveau la transformation d'un piont noir en reine, qui a provoqué un bug sur le pc de boris, pas sur celui de bryan
+//TODO note pour plus tard : tester de nouveau la transformation d'un pion noir en reine, qui a provoqué un bug sur le pc de boris, pas sur celui de bryan
 
 
 

@@ -1,5 +1,8 @@
 package fr.rphstudio.chess.game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static fr.rphstudio.chess.interf.IChess.*;
 
 public class Board {
@@ -115,20 +118,47 @@ public class Board {
     }
 
         // cette méthode renvoie la position du roi. elle est utilisée notamment pour identifier si le roi est en échec ou safe.
-        public ChessPosition getKingPosition (){
+        /*public ChessPosition getKingPosition (){
             int row;
             int col;
-                for (row = 0; row < 8; row = row + 1) {
-                    for (col = 0; col < 8; col = col + 1) {
-                        Piece pieces = chessBoard [row][col];
-                        if(pieces != null) {
-                            if (pieces.getPieceType()== ChessType.TYP_KING) {
-                                ChessPosition positionKing = new ChessPosition(row, col);
-                                return positionKing;
-                            }
+            ChessPosition positionKing;
+            for (row = 0; row < 8; row = row + 1) {
+                for (col = 0; col < 8; col = col + 1) {
+                    Piece pieces = chessBoard[row][col];
+                    if (pieces != null) {
+                        if (pieces.getPieceType() == ChessType.TYP_KING) {
+                            positionKing = new ChessPosition(row, col);
 
-                            }
-
-
+                        }
+                    }
+                    else{
+                        positionKing = null;
+                    }
+                }
+            }
+            return positionKing;
         }
+
+         */
+
+    public List<ChessPosition> getEnemiesList(ChessColor color) {
+
+
+        int row;
+        int col;
+        List<ChessPosition> enemiesList = new ArrayList();
+
+        for (row = 0; row < 8; row = row + 1) {
+            for (col = 0; col < 8; col = col + 1) {
+
+                Piece pieces = chessBoard[row][col];
+                if(pieces != null && pieces.getPieceColor() != color) {
+                    ChessPosition p1 = new ChessPosition(row , col);
+                    enemiesList.add(p1);
+                }
+            }
+        }
+        return enemiesList;
+
+    }
 }
