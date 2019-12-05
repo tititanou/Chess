@@ -7,7 +7,7 @@ import java.util.List;
 public class Moves {
 
     /**
-     * This method verifies that movements of pieces are not outside the tray
+     * This method verifies that movements of pieces are not outside the try
      * @param p
      * @return
      */
