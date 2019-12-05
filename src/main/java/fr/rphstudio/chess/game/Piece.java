@@ -10,6 +10,7 @@ public class Piece {
     private IChess.ChessType pieceType;
     private IMove move;
     private  int counter;
+    //private  List<IChess.ChessPosition> positionList;
 
     public Piece (IChess.ChessColor color, IChess.ChessType type, IMove mv){
         this.pieceColor = color;

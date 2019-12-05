@@ -94,9 +94,10 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
-
         Piece piece0 = board1.chessPiece(p0);
         Piece piece1 = board1.chessPiece(p1);
+        List<ChessPosition> history = new ArrayList();
+        board1.listPiecePositions(piece0 , p0 , history);
 
         ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
         if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
@@ -134,6 +135,8 @@ public class ChessModel implements IChess {
         }
 
         piece0.increaseCounter();
+        board1.listPiecePositions(piece0 , p1 , history);
+
 
         if (piece1 != null) {
             if (piece1.getPieceColor() == ChessColor.CLR_WHITE) {
