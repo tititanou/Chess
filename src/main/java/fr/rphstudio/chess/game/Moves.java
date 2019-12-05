@@ -65,4 +65,41 @@ public class Moves {
         return l;
     }
 
+    public static List<IChess.ChessPosition> pawnWalk(List<IChess.ChessPosition> l ,Board b , int vX , int vY , int dist , IChess.ChessPosition p){
+        int i;
+        for (i = 1 ; i <= dist ; i ++) {
+            IChess.ChessPosition p1 = new IChess.ChessPosition(p.x + vX * i, p.y + vY * i);
+            if (Moves.isValidPosition(p1) && Moves.isEmptyCell(p1, b)) {
+                l.add(p1);
+            } else {
+                break;
+            }
+        }
+        return l;
+    }
+
+    public static List<IChess.ChessPosition> pawnEats(List<IChess.ChessPosition> l ,Board b , int vX , int vY , int dist , IChess.ChessPosition p){
+        int i;
+        for (i = 1 ; i <= dist ; i ++){
+            IChess.ChessPosition p1 = new IChess.ChessPosition(p.x + vX * i , p.y + vY * i);
+            if(Moves.isValidPosition(p1) && !Moves.isEmptyCell(p1 , b)) {
+                Piece piece1 = b.chessPiece(p1);
+                IChess.ChessColor c = piece1.getPieceColor();
+                if (!Moves.isSameColor(p, c, b)) {
+                    l.add(p1);
+                    break;
+                } else {
+                    break;
+                }
+            }
+            else{
+                break;
+            }
+        }
+        return l;
+    }
+
 }
+
+
+

@@ -17,11 +17,11 @@ public class Board {
                 chessBoard[row][col] = null;
 
                 if (row == BOARD_POS_Y_WHITE_PAWNS) {
-                    chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_PAWN,new KnightMoves());
+                    chessBoard[row][col] = new Piece(ChessColor.CLR_WHITE, ChessType.TYP_PAWN,new PawnMoves());
                 }
 
                 if (row == BOARD_POS_Y_BLACK_PAWNS) {
-                    chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_PAWN,new KnightMoves());
+                    chessBoard[row][col] = new Piece(ChessColor.CLR_BLACK, ChessType.TYP_PAWN,new PawnMoves());
                 }
 
                 if (row == BOARD_POS_Y_WHITE_PIECES) {

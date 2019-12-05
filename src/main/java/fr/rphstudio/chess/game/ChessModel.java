@@ -87,9 +87,44 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
+
         Piece piece0 = board1.chessPiece(p0);
+
+        ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
+        if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
+            ChessPosition pRook = new ChessPosition(p0.x+3 , p0.y);
+            ChessPosition pRook1 = new ChessPosition(p0.x+1 , p0.y);
+            this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
+            this.board1.setBoardPos(pRook , null);
+            board1.chessPiece(pRook1).increaseCounter();
+            System.out.println("rook counter = " + board1.chessPiece(pRook1).getCounter());
+        }
+        ChessPosition pLCastling = new ChessPosition(p0.x-2 , p0.y);
+        if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pLCastling)){
+            ChessPosition pRook = new ChessPosition(p0.x-4 , p0.y);
+            ChessPosition pRook1 = new ChessPosition(p0.x-1 , p0.y);
+            this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
+            this.board1.setBoardPos(pRook , null);
+            board1.chessPiece(pRook1).increaseCounter();
+            System.out.println("rook counter = " + board1.chessPiece(pRook1).getCounter());
+        }
         this.board1.setBoardPos(p1 , piece0);
         this.board1.setBoardPos(p0 , null);
+
+        if (board1.chessPiece(p1).getPieceType() == ChessType.TYP_PAWN
+         && board1.chessPiece(p1).getPieceColor() == ChessColor.CLR_WHITE
+         && p1.y == BOARD_POS_Y_BLACK_PIECES){
+            Piece newQueen =  new Piece(ChessColor.CLR_WHITE , ChessType.TYP_QUEEN , new QueenMoves());
+            this.board1.setBoardPos(p1 , newQueen);
+        }
+
+        if (board1.chessPiece(p1).getPieceType() == ChessType.TYP_PAWN
+                && board1.chessPiece(p1).getPieceColor() == ChessColor.CLR_BLACK
+                && p1.y == BOARD_POS_Y_WHITE_PIECES){
+            Piece newQueen =  new Piece(ChessColor.CLR_BLACK , ChessType.TYP_QUEEN , new QueenMoves());
+            this.board1.setBoardPos(p1 , newQueen);
+        }
+
         piece0.increaseCounter();
         System.out.println(piece0.getCounter());
 

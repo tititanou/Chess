@@ -18,8 +18,23 @@ public class KingMoves implements IMove {
         Moves.straightMoves(possibleMoves, brd, 1, -1, 1, p);
 
         Piece piece = brd.chessPiece(p);
-        if (piece.hasMoved() == false){
+        IChess.ChessPosition pRookKS = new IChess.ChessPosition(p.x+3 , p.y);
+        IChess.ChessPosition pA = new IChess.ChessPosition(p.x+1 , p.y);
+        IChess.ChessPosition pB = new IChess.ChessPosition(p.x+2 , p.y);
+        if (!piece.hasMoved() && !brd.chessPiece(pRookKS).hasMoved()
+         && brd.chessPiece(pA) == null && brd.chessPiece(pB) == null){
+            IChess.ChessPosition p1 = new IChess.ChessPosition(p.x+2 , p.y);
+            possibleMoves.add(p1);
+        }
 
+        IChess.ChessPosition pRookQS = new IChess.ChessPosition(p.x-4 , p.y);
+        IChess.ChessPosition pC = new IChess.ChessPosition(p.x-1 , p.y);
+        IChess.ChessPosition pD = new IChess.ChessPosition(p.x-2 , p.y);
+        IChess.ChessPosition pE = new IChess.ChessPosition(p.x-3 , p.y);
+        if (!piece.hasMoved() && !brd.chessPiece(pRookQS).hasMoved()
+         && brd.chessPiece(pC) == null && brd.chessPiece(pD) == null && brd.chessPiece(pE) == null){
+            IChess.ChessPosition p1 = new IChess.ChessPosition(p.x-2 , p.y);
+            possibleMoves.add(p1);
         }
 
 
