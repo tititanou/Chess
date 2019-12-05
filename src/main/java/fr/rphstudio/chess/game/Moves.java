@@ -6,6 +6,11 @@ import java.util.List;
 
 public class Moves {
 
+    /**
+     * This method verifies that movements of pieces are not outside the tray
+     * @param p
+     * @return
+     */
     public static boolean isValidPosition(IChess.ChessPosition p){
         if (p.x >= 0 && p.x <= 7 && p.y >= 0 && p.y <= 7){
             return true;
@@ -15,6 +20,12 @@ public class Moves {
         }
     }
 
+    /**
+     *  This method checks that there is nobody on the move box
+     * @param p
+     * @param b
+     * @return
+     */
     public static boolean isEmptyCell(IChess.ChessPosition p , Board b){
         if (b.chessPiece(p) == null){
             return true;
@@ -24,6 +35,13 @@ public class Moves {
         }
     }
 
+    /**
+     * This method verifies that there are no pieces of the same color where we want move
+     * @param p
+     * @param clr
+     * @param b
+     * @return
+     */
     public static boolean isSameColor(IChess.ChessPosition p , IChess.ChessColor clr , Board b){
         if (b.chessPiece(p) != null){
             if (b.chessPiece(p).getPieceColor() == clr){
@@ -38,6 +56,16 @@ public class Moves {
         }
     }
 
+    /**
+     * This method allows you to enter a moving point as a parameter Using it from the class we created
+     * @param l
+     * @param b
+     * @param vX
+     * @param vY
+     * @param dist
+     * @param p
+     * @return
+     */
     public static List<IChess.ChessPosition> straightMoves(List<IChess.ChessPosition> l ,Board b , int vX , int vY , int dist , IChess.ChessPosition p){
         int i;
         for (i = 1 ; i <= dist ; i ++){
