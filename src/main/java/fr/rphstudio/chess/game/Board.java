@@ -103,7 +103,6 @@ public class Board {
 
         for (row = 0; row < 8; row = row + 1) {
             for (col = 0; col < 8; col = col + 1) {
-
                 Piece pieces = chessBoard[row][col];
                 if(pieces != null) {
                     if (pieces.getPieceColor() == color) {
@@ -150,11 +149,12 @@ public class Board {
 
         for (row = 0; row < 8; row = row + 1) {
             for (col = 0; col < 8; col = col + 1) {
-
                 Piece pieces = chessBoard[row][col];
-                if(pieces != null && pieces.getPieceColor() != color) {
-                    ChessPosition p1 = new ChessPosition(row , col);
-                    enemiesList.add(p1);
+                if(pieces != null){
+                    ChessPosition p1 = new ChessPosition(row, col);
+                    if(pieces.getPieceColor() != color) {
+                        enemiesList.add(p1);
+                    }
                 }
             }
         }

@@ -19,6 +19,13 @@ public class Piece {
 
     }
 
+    public void setPieceType(IChess.ChessType pieceType) {
+        this.pieceType = pieceType;
+    }
+
+    public void setMove(IMove move) {
+        this.move = move;
+    }
 
     public IChess.ChessColor getPieceColor() {
         return this.pieceColor;
