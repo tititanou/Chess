@@ -11,6 +11,8 @@ public class ChessModel implements IChess {
 
     static private ChessModel instance;
     private Board board1;
+    public List<ChessType> removedWhitePiece = new ArrayList();
+    public List<ChessType> removedBlackPieces = new ArrayList();
 
     private ChessModel(){
         reinit();
@@ -73,12 +75,10 @@ public class ChessModel implements IChess {
         Piece piece1 = board1.chessPiece(p);
         if (piece1 != null){
             possibleMoves = piece1.getMove(p,board1);
-            List <ChessPosition> realMoves = new ArrayList<>();
+            //List <ChessPosition> realMoves = new ArrayList<>();
             //TODO story 8 ici à finir
-            for (i=0; i<=possibleMoves.size(); i=i+1) {
-
-            }
-
+           // for (i=0; i<=possibleMoves.size(); i=i+1) {
+            //}
             //liste des coups réellement possibles realMoves
             //boucle sur posibleMoves
                 //pour chaque p1 on va déplacer la piece(avec movePiece) puis on teste si roi allié est safe
@@ -94,8 +94,10 @@ public class ChessModel implements IChess {
 
     @Override
     public void movePiece(ChessPosition p0, ChessPosition p1) {
-
         Piece piece0 = board1.chessPiece(p0);
+        Piece piece1 = board1.chessPiece(p1);
+        List<ChessPosition> history = new ArrayList();
+        board1.listPiecePositions(piece0 , p0 , history);
 
         ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
         if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
@@ -121,18 +123,28 @@ public class ChessModel implements IChess {
         if (board1.chessPiece(p1).getPieceType() == ChessType.TYP_PAWN
          && board1.chessPiece(p1).getPieceColor() == ChessColor.CLR_WHITE
          && p1.y == BOARD_POS_Y_BLACK_PIECES){
-            Piece newQueen =  new Piece(ChessColor.CLR_WHITE , ChessType.TYP_QUEEN , new QueenMoves());
-            this.board1.setBoardPos(p1 , newQueen);
+            piece0.setPieceType(ChessType.TYP_QUEEN);
+            piece0.setMove(new QueenMoves());
         }
 
         if (board1.chessPiece(p1).getPieceType() == ChessType.TYP_PAWN
                 && board1.chessPiece(p1).getPieceColor() == ChessColor.CLR_BLACK
                 && p1.y == BOARD_POS_Y_WHITE_PIECES){
-            Piece newQueen =  new Piece(ChessColor.CLR_BLACK , ChessType.TYP_QUEEN , new QueenMoves());
-            this.board1.setBoardPos(p1 , newQueen);
+            piece0.setPieceType(ChessType.TYP_QUEEN);
+            piece0.setMove(new QueenMoves());
         }
 
         piece0.increaseCounter();
+        board1.listPiecePositions(piece0 , p1 , history);
+
+
+        if (piece1 != null) {
+            if (piece1.getPieceColor() == ChessColor.CLR_WHITE) {
+                removedWhitePiece.add(piece1.getPieceType());
+            } else {
+                removedBlackPieces.add(piece1.getPieceType());
+            }
+        }
         System.out.println(piece0.getCounter());
 
 
@@ -140,25 +152,40 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
-        ChessKingState kingState;
-        //= ChessKingState.KING_SAFE;
+        ChessKingState kingState= ChessKingState.KING_SAFE;
 
 
-        if(color == ChessColor.CLR_WHITE) {
+       /* if(color == ChessColor.CLR_WHITE) {
             List<ChessPosition> tempList = board1.getEnemiesList(ChessColor.CLR_BLACK);
+            System.out.println("tempList = " + tempList);
             int i;
             for (i=0 ; i < tempList.size() ; i++){
                 ChessPosition p = tempList.get(i);
+                getPieceMoves(p);
                 List<ChessPosition> forbiddenPos = this.getPieceMoves(p);
+                System.out.println("forbiddenPos = " + forbiddenPos);
                 int j;
                 for (j=0 ; j < forbiddenPos.size() ; j++){
                     ChessPosition checkPos = forbiddenPos.get(j);
+                    System.out.println("pos " + checkPos);
                     Piece checkPiece = board1.chessPiece(checkPos);
-                    if (checkPiece != null && checkPiece.getPieceType() == ChessType.TYP_KING) {
-                        kingState = ChessKingState.KING_THREATEN;
-                    }
-                    else {
-                        kingState = ChessKingState.KING_SAFE;
+                    List<Piece> checkList = new ArrayList();
+                    checkList.add(checkPiece);
+                    System.out.println("checking " + checkList);
+
+                    System.out.println("piece " + checkPiece);
+                    int k;
+                    for (k=0 ; k < checkList.size() ; k++) {
+                        if (checkPiece != null) {
+                            ChessType checkType = checkPiece.getPieceType();
+                            if (checkType == ChessType.TYP_KING) {
+                                kingState = ChessKingState.KING_THREATEN;
+                                System.out.println(kingState + " 1");
+                            }
+                        } else {
+                            kingState = ChessKingState.KING_SAFE;
+                            System.out.println(kingState + " 2");
+                        }
                     }
                 }
             }
@@ -182,7 +209,7 @@ public class ChessModel implements IChess {
                 }
             }
         }
-
+*/
         return kingState;
         //tory 7 :Il faut vérifier s’ile st dans la portée d’une des pièces.
         //1°Double boucle  pour trouver la position du roi=> king position.
@@ -195,8 +222,25 @@ public class ChessModel implements IChess {
 
     @Override
     public List<ChessType> getRemovedPieces(ChessColor color) {
-        ArrayList possibleMoves = new ArrayList();
-        return possibleMoves;
+        List<ChessType> removedPiece = new ArrayList();
+
+        if (color== ChessColor.CLR_WHITE) {
+            removedPiece = removedWhitePiece;
+        }
+            /*ChessType pieceWhite = new Piece;
+            removedWhitePiece.add(pieceWhite);
+            return removedBlackPieces;
+        }*/
+        if (color==ChessColor.CLR_BLACK) {
+            removedPiece = removedBlackPieces;
+        }
+
+        return removedPiece;
+
+           /* ChessType pieceBlack = new Piece;
+            movedBlackPieces.add(pieceBlack);
+            return movedBlackPieces;
+        }*/
     }
 
     @Override
