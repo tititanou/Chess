@@ -37,6 +37,8 @@ public class KingMoves implements IMove {
             possibleMoves.add(p1);
         }
 
+        }
+
 
 
 

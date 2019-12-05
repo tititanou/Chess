@@ -69,9 +69,16 @@ public class ChessModel implements IChess {
     @Override
     public List<ChessPosition> getPieceMoves(ChessPosition p) {
         List<ChessPosition> possibleMoves = new ArrayList();
+        int i;
         Piece piece1 = board1.chessPiece(p);
         if (piece1 != null){
             possibleMoves = piece1.getMove(p,board1);
+            List <ChessPosition> realMoves = new ArrayList<>();
+            //TODO story 8 ici à finir
+            for (i=0; i<=possibleMoves.size(); i=i+1) {
+
+            }
+
             //liste des coups réellement possibles realMoves
             //boucle sur posibleMoves
                 //pour chaque p1 on va déplacer la piece(avec movePiece) puis on teste si roi allié est safe
@@ -133,6 +140,17 @@ public class ChessModel implements IChess {
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
+
+
+
+        //tory 7 :Il faut vérifier s’ile st dans la portée d’une des pièces.
+        //1°Double boucle  pour trouver la position du roi=> king position.
+        //2)Une fois trouvé la position du roi, nouvelle double boucle our trouver les positions des ennemis.
+        //Si c’ets une couleur ennemis, on récupère la liste des positions possibles de la pièce (liste des positions d el’ennenemi)
+        //3. Parcourir la liste de positions ennemis et dire si ça correspond à la position du roi
+        //4. Tu renvoies safe ou menacé
+
+
         return ChessKingState.KING_SAFE;
     }
 
@@ -151,4 +169,13 @@ public class ChessModel implements IChess {
     public long getPlayerDuration(ChessColor color, boolean isPlaying) {
         return 0;
     }
+
+
+//TODO note pour plus tard : tester de nouveau la transformation d'un piont noir en reine, qui a provoqué un bug sur le pc de boris, pas sur celui de bryan
+
+
+
+
+
+
 }

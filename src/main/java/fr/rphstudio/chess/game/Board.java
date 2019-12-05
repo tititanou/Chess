@@ -114,4 +114,21 @@ public class Board {
 
     }
 
+        // cette méthode renvoie la position du roi. elle est utilisée notamment pour identifier si le roi est en échec ou safe.
+        public ChessPosition getKingPosition (){
+            int row;
+            int col;
+                for (row = 0; row < 8; row = row + 1) {
+                    for (col = 0; col < 8; col = col + 1) {
+                        Piece pieces = chessBoard [row][col];
+                        if(pieces != null) {
+                            if (pieces.getPieceType()== ChessType.TYP_KING) {
+                                ChessPosition positionKing = new ChessPosition(row, col);
+                                return positionKing;
+                            }
+
+                            }
+
+
+        }
 }
