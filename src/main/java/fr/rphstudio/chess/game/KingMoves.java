@@ -3,6 +3,12 @@ import fr.rphstudio.chess.interf.IChess;
 import java.util.ArrayList;
 import java.util.List;
 public class KingMoves implements IMove {
+    /**
+     * this method is used to record the possibles king’s displacements and return a list
+     * @param p
+     * @param brd
+     * @return
+     */
     @Override
     public List<IChess.ChessPosition> getMoves(IChess.ChessPosition p, Board brd) {
         List <IChess.ChessPosition> possibleMoves = new ArrayList<>();
@@ -17,6 +23,9 @@ public class KingMoves implements IMove {
         Moves.straightMoves(possibleMoves, brd, 0, -1, 1, p);
         Moves.straightMoves(possibleMoves, brd, 1, -1, 1, p);
 
+        /**
+         * code tip necessary for the operation of the roque
+         */
         Piece piece = brd.chessPiece(p);
         IChess.ChessPosition pRookKS = new IChess.ChessPosition(p.x+3 , p.y);
         IChess.ChessPosition pA = new IChess.ChessPosition(p.x+1 , p.y);
@@ -26,7 +35,9 @@ public class KingMoves implements IMove {
             IChess.ChessPosition p1 = new IChess.ChessPosition(p.x+2 , p.y);
             possibleMoves.add(p1);
         }
-
+        /**
+         * code tip necessary for the operation of the roque
+         */
         IChess.ChessPosition pRookQS = new IChess.ChessPosition(p.x-4 , p.y);
         IChess.ChessPosition pC = new IChess.ChessPosition(p.x-1 , p.y);
         IChess.ChessPosition pD = new IChess.ChessPosition(p.x-2 , p.y);

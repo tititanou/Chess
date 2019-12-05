@@ -6,9 +6,15 @@ import fr.rphstudio.chess.interf.IChess.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class KnightMoves implements IMove {
 
-
+    /**
+     * this method is used to record the possibles Knight’s displacements and return a list, we used a different method but both works
+     * @param p
+     * @param brd
+     * @return
+     */
     @Override
     public List<ChessPosition> getMoves(ChessPosition p, Board brd) {
         List<ChessPosition> possibleMoves = new ArrayList<>();
