@@ -159,13 +159,11 @@ public class ChessModel implements IChess {
 
         Piece piece0 = board1.chessPiece(p0);
         Piece piece1 = board1.chessPiece(p1);
-<<<<<<< HEAD
-=======
-        List<ChessPosition> history = new ArrayList();
-        board1.listPiecePositions(piece0 , p0 , history);
+        /*List<ChessPosition> history = new ArrayList();
+        board1.listPiecePositions(piece0 , p0 , history);*/
 
         // castling move
->>>>>>> master
+
         ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
         if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
             ChessPosition pRook = new ChessPosition(p0.x+3 , p0.y);
@@ -181,14 +179,11 @@ public class ChessModel implements IChess {
             this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
             this.board1.setBoardPos(pRook , null);
             board1.chessPiece(pRook1).increaseCounter();
-<<<<<<< HEAD
-            }
-=======
-            System.out.println("rook counter = " + board1.chessPiece(pRook1).getCounter());
+
+
         }
 
         // normal move
->>>>>>> master
         this.board1.setBoardPos(p1 , piece0);
         this.board1.setBoardPos(p0 , null);
 
@@ -199,7 +194,7 @@ public class ChessModel implements IChess {
          && p1.y == BOARD_POS_Y_BLACK_PIECES){
             piece0.setPieceType(ChessType.TYP_QUEEN);
             piece0.setMove(new QueenMoves());
-        }
+         }
 
         if (board1.chessPiece(p1).getPieceType() == ChessType.TYP_PAWN
                 && board1.chessPiece(p1).getPieceColor() == ChessColor.CLR_BLACK
@@ -208,12 +203,11 @@ public class ChessModel implements IChess {
             piece0.setMove(new QueenMoves());
         }
         piece0.increaseCounter();
-<<<<<<< HEAD
-=======
-        board1.listPiecePositions(piece0 , p1 , history);
+
+        //board1.listPiecePositions(piece0 , p1 , history);
 
         // store removed pieces
->>>>>>> master
+
         if (piece1 != null) {
             if (piece1.getPieceColor() == ChessColor.CLR_WHITE) {
                 removedWhitePiece.add(piece1.getPieceType());
@@ -265,19 +259,10 @@ public class ChessModel implements IChess {
         if (color== ChessColor.CLR_WHITE) {
             removedPiece = removedWhitePiece;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> master
         if (color==ChessColor.CLR_BLACK) {
             removedPiece = removedBlackPieces;
         }
         return removedPiece;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> master
     }
 
     @Override
