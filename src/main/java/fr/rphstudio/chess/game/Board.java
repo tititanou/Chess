@@ -118,32 +118,34 @@ public class Board {
     }
 
     // cette méthode renvoie la position du roi. elle est utilisée notamment pour identifier si le roi est en échec ou safe.
-        /*public ChessPosition getKingPosition (){
-            int row;
-            int col;
-            ChessPosition positionKing;
-            for (row = 0; row < 8; row = row + 1) {
-                for (col = 0; col < 8; col = col + 1) {
-                    Piece pieces = chessBoard[row][col];
-                    if (pieces != null) {
-                        if (pieces.getPieceType() == ChessType.TYP_KING) {
-                            positionKing = new ChessPosition(row, col);
 
-                        }
-                    }
-                    else{
-                        positionKing = null;
+
+   /* public List<ChessPosition> listPiecePositions(ChessPosition p , Piece pc) {
+        List<ChessPosition> list = null;
+        if(pc.equals(this.chessPiece(p))){
+            list.add(p);
+        }
+        return list;
+    }*/
+
+    public ChessPosition whereIsKing(ChessColor color) {
+        int row;
+        int col;
+        ChessPosition pKing = null;
+        for (row = 0; row < 8; row = row + 1) {
+            for (col = 0; col < 8; col = col + 1) {
+                Piece pieces = chessBoard[row][col];
+                if (pieces != null) {
+                    if (pieces.getPieceColor() == color && pieces.getPieceType() == ChessType.TYP_KING) {
+                        pKing = new ChessPosition(col , row);
                     }
                 }
             }
-            return positionKing;
         }
-
-         */
+        return pKing;
+    }
 
     public List<ChessPosition> getEnemiesList(ChessColor color) {
-
-
         int row;
         int col;
         List<ChessPosition> enemiesList = new ArrayList();
@@ -151,33 +153,22 @@ public class Board {
         for (row = 0; row < 8; row = row + 1) {
             for (col = 0; col < 8; col = col + 1) {
                 Piece pieces = chessBoard[row][col];
-                if (pieces != null) {
-                    ChessPosition p1 = new ChessPosition(row, col);
-                    if (pieces.getPieceColor() != color) {
+                if (pieces != null && pieces.getPieceColor() != color) {
+                        ChessPosition p1 = new ChessPosition(col , row);
                         enemiesList.add(p1);
-                    }
                 }
             }
         }
         return enemiesList;
-
     }
 
-    public List<ChessPosition> listPiecePositions(Piece pieces, ChessPosition p, List<ChessPosition> l) {
-        int row;
-        int col;
-
-        for (row = 0; row < 8; row = row + 1) {
-            for (col = 0; col < 8; col = col + 1) {
-                pieces = chessBoard[row][col];
-                if (pieces != null) {
-                    p = new ChessPosition(row, col);
-                    l.add(p);
-                }
-            }
+    /*public ChessPosition getPosition(List<ChessPosition> l){
+        int i;
+        ChessPosition p = null;
+        for(i = 0 ; i < l.size() ; i = i + 1){
+            p = l.get(i);
         }
-        return l;
-    }
-
+        return p;
+    }*/
 
 }

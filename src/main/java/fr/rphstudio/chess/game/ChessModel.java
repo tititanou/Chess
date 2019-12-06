@@ -28,6 +28,18 @@ public class ChessModel implements IChess {
     @Override
     public void reinit() {
         this.board1 = new Board();
+       /* int raw;
+        int col;
+        for(raw = 0 ; raw < 8 ; raw = raw + 1){
+            for(col = 0 ; col < 8 ; col = col + 1){
+                ChessPosition p = new ChessPosition(col , raw);
+                Piece pc = board1.chessPiece(p);
+                if(pc != null){
+                    List<ChessPosition> l = board1.listPiecePositions(p , pc);
+                    pc.setHistory(l);
+                }
+            }
+        }*/
     }
 
     @Override
@@ -96,9 +108,6 @@ public class ChessModel implements IChess {
     public void movePiece(ChessPosition p0, ChessPosition p1) {
         Piece piece0 = board1.chessPiece(p0);
         Piece piece1 = board1.chessPiece(p1);
-        List<ChessPosition> history = new ArrayList();
-        board1.listPiecePositions(piece0 , p0 , history);
-
         ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
         if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
             ChessPosition pRook = new ChessPosition(p0.x+3 , p0.y);
@@ -106,7 +115,6 @@ public class ChessModel implements IChess {
             this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
             this.board1.setBoardPos(pRook , null);
             board1.chessPiece(pRook1).increaseCounter();
-            System.out.println("rook counter = " + board1.chessPiece(pRook1).getCounter());
         }
         ChessPosition pLCastling = new ChessPosition(p0.x-2 , p0.y);
         if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pLCastling)){
@@ -115,8 +123,7 @@ public class ChessModel implements IChess {
             this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
             this.board1.setBoardPos(pRook , null);
             board1.chessPiece(pRook1).increaseCounter();
-            System.out.println("rook counter = " + board1.chessPiece(pRook1).getCounter());
-        }
+            }
         this.board1.setBoardPos(p1 , piece0);
         this.board1.setBoardPos(p0 , null);
 
@@ -133,11 +140,7 @@ public class ChessModel implements IChess {
             piece0.setPieceType(ChessType.TYP_QUEEN);
             piece0.setMove(new QueenMoves());
         }
-
         piece0.increaseCounter();
-        board1.listPiecePositions(piece0 , p1 , history);
-
-
         if (piece1 != null) {
             if (piece1.getPieceColor() == ChessColor.CLR_WHITE) {
                 removedWhitePiece.add(piece1.getPieceType());
@@ -145,79 +148,31 @@ public class ChessModel implements IChess {
                 removedBlackPieces.add(piece1.getPieceType());
             }
         }
-        System.out.println(piece0.getCounter());
-
-
     }
 
     @Override
     public ChessKingState getKingState(ChessColor color) {
-        ChessKingState kingState= ChessKingState.KING_SAFE;
-
-
-       /* if(color == ChessColor.CLR_WHITE) {
-            List<ChessPosition> tempList = board1.getEnemiesList(ChessColor.CLR_BLACK);
-            System.out.println("tempList = " + tempList);
+        ChessKingState kingState = ChessKingState.KING_SAFE;
+        ChessPosition pKing = board1.whereIsKing(color);
+        List<ChessPosition> enemiesPos = board1.getEnemiesList(color);
+        if(pKing != null) {
             int i;
-            for (i=0 ; i < tempList.size() ; i++){
-                ChessPosition p = tempList.get(i);
-                getPieceMoves(p);
-                List<ChessPosition> forbiddenPos = this.getPieceMoves(p);
-                System.out.println("forbiddenPos = " + forbiddenPos);
+            for (i = 0; i < enemiesPos.size(); i = i + 1) {
+                ChessPosition p = enemiesPos.get(i);
+                List<ChessPosition> possibleMoves = instance.getPieceMoves(p);
                 int j;
-                for (j=0 ; j < forbiddenPos.size() ; j++){
-                    ChessPosition checkPos = forbiddenPos.get(j);
-                    System.out.println("pos " + checkPos);
-                    Piece checkPiece = board1.chessPiece(checkPos);
-                    List<Piece> checkList = new ArrayList();
-                    checkList.add(checkPiece);
-                    System.out.println("checking " + checkList);
-
-                    System.out.println("piece " + checkPiece);
-                    int k;
-                    for (k=0 ; k < checkList.size() ; k++) {
-                        if (checkPiece != null) {
-                            ChessType checkType = checkPiece.getPieceType();
-                            if (checkType == ChessType.TYP_KING) {
-                                kingState = ChessKingState.KING_THREATEN;
-                                System.out.println(kingState + " 1");
-                            }
-                        } else {
-                            kingState = ChessKingState.KING_SAFE;
-                            System.out.println(kingState + " 2");
-                        }
+                for (j = 0; j < possibleMoves.size(); j = j + 1) {
+                    ChessPosition possiblePos = possibleMoves.get(j);
+                    if (possiblePos.equals(pKing)) {
+                        kingState = ChessKingState.KING_THREATEN;
                     }
                 }
             }
         }
         else{
-            List<ChessPosition> tempList = board1.getEnemiesList(ChessColor.CLR_WHITE);
-            int i;
-            for (i=0 ; i < tempList.size() ; i++){
-                ChessPosition p = tempList.get(i);
-                List<ChessPosition> forbiddenPos = this.getPieceMoves(p);
-                int j;
-                for (j=0 ; j < forbiddenPos.size() ; j++){
-                    ChessPosition checkPos = forbiddenPos.get(j);
-                    Piece checkPiece = board1.chessPiece(checkPos);
-                    if (checkPiece != null && checkPiece.getPieceType() == ChessType.TYP_KING) {
-                        kingState = ChessKingState.KING_THREATEN;
-                    }
-                    else {
-                        kingState = ChessKingState.KING_SAFE;
-                    }
-                }
-            }
+            kingState =ChessKingState.KING_THREATEN;
         }
-*/
         return kingState;
-        //tory 7 :Il faut vérifier s’ile st dans la portée d’une des pièces.
-        //1°Double boucle  pour trouver la position du roi=> king position.
-        //2)Une fois trouvé la position du roi, nouvelle double boucle our trouver les positions des ennemis.
-        //Si c’ets une couleur ennemis, on récupère la liste des positions possibles de la pièce (liste des positions d el’ennenemi)
-        //3. Parcourir la liste de positions ennemis et dire si ça correspond à la position du roi
-        //4. Tu renvoies safe ou menacé
-
     }
 
     @Override
@@ -227,20 +182,10 @@ public class ChessModel implements IChess {
         if (color== ChessColor.CLR_WHITE) {
             removedPiece = removedWhitePiece;
         }
-            /*ChessType pieceWhite = new Piece;
-            removedWhitePiece.add(pieceWhite);
-            return removedBlackPieces;
-        }*/
         if (color==ChessColor.CLR_BLACK) {
             removedPiece = removedBlackPieces;
         }
-
         return removedPiece;
-
-           /* ChessType pieceBlack = new Piece;
-            movedBlackPieces.add(pieceBlack);
-            return movedBlackPieces;
-        }*/
     }
 
     @Override

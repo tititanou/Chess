@@ -10,13 +10,14 @@ public class Piece {
     private IChess.ChessType pieceType;
     private IMove move;
     private  int counter;
-    //private  List<IChess.ChessPosition> positionList;
+    private List<IChess.ChessPosition> history;
 
     public Piece (IChess.ChessColor color, IChess.ChessType type, IMove mv){
         this.pieceColor = color;
         this.pieceType = type;
         this.move=mv;
         this.counter = 0;
+        this.history = null;
 
     }
 
@@ -51,5 +52,9 @@ public class Piece {
 
     public boolean hasMoved(){
         return (counter > 0);
+    }
+
+    public void setHistory(List<IChess.ChessPosition> history) {
+        this.history = history;
     }
 }
