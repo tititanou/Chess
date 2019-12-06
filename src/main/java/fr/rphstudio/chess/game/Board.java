@@ -87,7 +87,12 @@ public class Board {
     }
 
     public Piece chessPiece(ChessPosition p) {
-        return this.chessBoard[p.y][p.x];
+        if(Moves.isValidPosition(p)) {
+            return this.chessBoard[p.y][p.x];
+        }
+        else {
+            return null;
+        }
     }
 
     public Piece setBoardPos(ChessPosition p, Piece pc) {

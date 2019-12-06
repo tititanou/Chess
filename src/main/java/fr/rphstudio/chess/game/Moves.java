@@ -93,6 +93,16 @@ public class Moves {
         return l;
     }
 
+    /***
+     * the "walk" of pawn
+     * @param l possible moves list
+     * @param b game board
+     * @param vX the way he can move on the x absis
+     * @param vY the way he can move on the y absis
+     * @param dist maximum nb of positions for a move in one direction
+     * @param p initial position
+     * @return completed possible moves list
+     */
     public static List<IChess.ChessPosition> pawnWalk(List<IChess.ChessPosition> l ,Board b , int vX , int vY , int dist , IChess.ChessPosition p){
         int i;
         for (i = 1 ; i <= dist ; i ++) {
@@ -106,6 +116,16 @@ public class Moves {
         return l;
     }
 
+    /***
+     * the way of pawn to eat
+     * @param l possible moves list
+     * @param b
+     * @param vX
+     * @param vY
+     * @param dist
+     * @param p
+     * @return completed possible moves list
+     */
     public static List<IChess.ChessPosition> pawnEats(List<IChess.ChessPosition> l ,Board b , int vX , int vY , int dist , IChess.ChessPosition p){
         int i;
         for (i = 1 ; i <= dist ; i ++){
@@ -126,6 +146,8 @@ public class Moves {
         }
         return l;
     }
+
+
 
 }
 

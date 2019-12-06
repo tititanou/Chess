@@ -164,24 +164,26 @@ public class ChessModel implements IChess {
 
         // castling move
 
-        ChessPosition pSCastling = new ChessPosition(p0.x+2 , p0.y);
-        if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)){
-            ChessPosition pRook = new ChessPosition(p0.x+3 , p0.y);
-            ChessPosition pRook1 = new ChessPosition(p0.x+1 , p0.y);
-            this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
-            this.board1.setBoardPos(pRook , null);
-            board1.chessPiece(pRook1).increaseCounter();
-        }
-        ChessPosition pLCastling = new ChessPosition(p0.x-2 , p0.y);
-        if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pLCastling)){
-            ChessPosition pRook = new ChessPosition(p0.x-4 , p0.y);
-            ChessPosition pRook1 = new ChessPosition(p0.x-1 , p0.y);
-            this.board1.setBoardPos(pRook1 , board1.chessPiece(pRook));
-            this.board1.setBoardPos(pRook , null);
-            board1.chessPiece(pRook1).increaseCounter();
+        ChessPosition pSCastling = new ChessPosition(p0.x + 2, p0.y);
+            if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pSCastling)) {
+                ChessPosition pRook = new ChessPosition(p0.x + 3, p0.y);
+                ChessPosition pRook1 = new ChessPosition(p0.x + 1, p0.y);
+                this.board1.setBoardPos(pRook1, board1.chessPiece(pRook));
+                this.board1.setBoardPos(pRook, null);
+                board1.chessPiece(pRook1).increaseCounter();
+            }
+            ChessPosition pLCastling = new ChessPosition(p0.x - 2, p0.y);
+            if (piece0.getPieceType() == ChessType.TYP_KING && p1.equals(pLCastling)) {
+                ChessPosition pRook = new ChessPosition(p0.x - 4, p0.y);
+                ChessPosition pRook1 = new ChessPosition(p0.x - 1, p0.y);
+                this.board1.setBoardPos(pRook1, board1.chessPiece(pRook));
+                this.board1.setBoardPos(pRook, null);
+                board1.chessPiece(pRook1).increaseCounter();
+            }
 
 
-        }
+
+
 
         // normal move
         this.board1.setBoardPos(p1 , piece0);
@@ -264,6 +266,13 @@ public class ChessModel implements IChess {
         }
         return removedPiece;
     }
+
+    /*public boolean isPlaying(IChess.ChessColor c){
+        ChessPosition p ;
+
+        }
+
+    }*/
 
     @Override
     public boolean undoLastMove() {

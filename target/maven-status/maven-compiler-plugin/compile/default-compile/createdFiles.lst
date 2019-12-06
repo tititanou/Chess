@@ -20,5 +20,6 @@ fr/rphstudio/chess/launcher/ChessFontManager$1.class
 fr/rphstudio/chess/game/IMove.class
 fr/rphstudio/chess/game/ChessModel.class
 fr/rphstudio/chess/game/Board.class
+fr/rphstudio/chess/game/Chrono.class
 fr/rphstudio/chess/interf/IChess$ChessPosition.class
 fr/rphstudio/chess/interf/EmptyCellException.class

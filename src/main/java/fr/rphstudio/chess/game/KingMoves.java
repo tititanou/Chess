@@ -26,7 +26,9 @@ public class KingMoves implements IMove {
         /**
          * code tip necessary for the operation of the roque
          */
+
         Piece king = brd.chessPiece(p);
+
         IChess.ChessPosition pRookKS = new IChess.ChessPosition(p.x+3 , p.y);
         IChess.ChessPosition pA = new IChess.ChessPosition(p.x+1 , p.y);
         IChess.ChessPosition pB = new IChess.ChessPosition(p.x+2 , p.y);
@@ -43,10 +45,13 @@ public class KingMoves implements IMove {
             IChess.ChessPosition pC = new IChess.ChessPosition(p.x-1 , p.y);
             IChess.ChessPosition pD = new IChess.ChessPosition(p.x-2 , p.y);
             IChess.ChessPosition pE = new IChess.ChessPosition(p.x-3 , p.y);
-            if (!king.hasMoved() && !brd.chessPiece(pRookQS).hasMoved()
-             && brd.chessPiece(pC) == null && brd.chessPiece(pD) == null && brd.chessPiece(pE) == null){
-                IChess.ChessPosition p1 = new IChess.ChessPosition(p.x-2 , p.y);
-                possibleMoves.add(p1);
+            Piece pcRook =brd.chessPiece(pRookQS);
+            if(pcRook!= null) {
+                if (!king.hasMoved() && !pcRook.hasMoved()
+                        && brd.chessPiece(pC) == null && brd.chessPiece(pD) == null && brd.chessPiece(pE) == null) {
+                    IChess.ChessPosition p1 = new IChess.ChessPosition(p.x - 2, p.y);
+                    possibleMoves.add(p1);
+                }
             }
 
         /*int x1;

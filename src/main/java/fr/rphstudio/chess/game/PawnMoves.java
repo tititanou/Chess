@@ -7,6 +7,9 @@ import java.util.List;
 
 public class PawnMoves implements IMove {
     @Override
+    /***
+     * pawn moves depending on if it has already moved or not and if it just walks or if it eats
+     */
     public List<IChess.ChessPosition> getMoves(IChess.ChessPosition p, Board brd) {
         List<IChess.ChessPosition> possibleMoves = new ArrayList<>();
         if (brd.chessPiece(p).getPieceColor() == IChess.ChessColor.CLR_WHITE) {
